@@ -62,4 +62,15 @@ def sort(dictionary):
     runtime = time.time() - start_time
     print("Sorted in: {:,}s".format(int(round(runtime))))
 
-
+''' Search for word anagrams; return organized list or None '''
+def search(word):
+    foregin_key = cache.get(word)
+    if foregin_key:
+        collector = []
+        for index in range(cache.llen(foregin_key)):
+            # Append to collector in UTF-8 format
+            collector.append(cache.lindex(foregin_key, index).decode('utf-8'))
+        return alphabetize(collector)
+    else:
+        # Requested word non existent in the available dictionary
+        return None
