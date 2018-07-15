@@ -2,7 +2,7 @@
 ''' Interface for searching and sorting dictionary for anagrams '''
 import time
 from anagramer import cache
-from anagramer.utils import parse, normalize, alphabetize
+from anagramer.utils import parse, normalize, alphabetize, run_in_background
 try:
     import CPickle as pickle
 except ImportError:
@@ -15,6 +15,7 @@ EN_US = 'en-us.dict'
 CACHE_HISTORY = 'cache:history'
 
 ''' Create a one-to-many relationship; each word maps to a list of anagrams '''
+@run_in_background
 def sort(dictionary):
     start_time = time.time()
     cache_history = cache.get(CACHE_HISTORY)

@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import threading
+
 ''' Stream each line of a file '''
 def parse(dictionary_file):
     with open(dictionary_file, 'r') as dictionary:
@@ -20,3 +22,9 @@ def alphabetize(collection):
     # already be in a completely alphabetized arrangement, however an insert that is
     # an update to the cache may not guarantee this arrangement.
     return collection
+
+''' Simple decorator for running a function asynchronously '''
+def run_in_background(func):
+    def wrapper(*args, **kwargs):
+        threading.Thread(target=func, args=args, kwargs=kwargs).start()
+    return wrapper
