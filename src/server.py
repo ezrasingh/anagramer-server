@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 # Add GraphQL endpoint
 app.add_url_rule(
-    '/graphql',
+    '/api',
     view_func=GraphQLView.as_view(
         'graphql',
         schema=api.schema,
