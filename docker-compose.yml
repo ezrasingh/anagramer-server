@@ -3,7 +3,7 @@ services:
   api:
     build: . 
     ports:
-     - "5001:5001"
+     - 5001:5001
     volumes:
      - ./src:/src
     depends_on:
