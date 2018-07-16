@@ -2,7 +2,7 @@
 ''' Interface for searching and sorting dictionary for anagrams '''
 import time
 from anagramer import cache
-from anagramer.utils import parse, normalize, alphabetize, run_in_background
+from anagramer.utils import parse, normalize, run_in_background
 try:
     import CPickle as pickle
 except ImportError:
@@ -71,7 +71,7 @@ def search(word):
         for index in range(cache.llen(foregin_key)):
             # Append to collector in UTF-8 format
             collector.append(cache.lindex(foregin_key, index).decode('utf-8'))
-        return alphabetize(collector)
+        return collector
     else:
         # Requested word non existent in the available dictionary
         return None

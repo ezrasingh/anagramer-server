@@ -27,7 +27,10 @@ def alphabetize(collection):
     # and anagram insertions are head-first (e.g lpush'ed into linked list) items should
     # already be in a completely alphabetized arrangement, however an insert that is
     # an update to the cache may not guarantee this arrangement.
-    return sorted(collection, key=(lambda x: x[1:]))
+    try:
+        return sorted(collection, key=(lambda x: x[1:]))
+    except TypeError:
+        return None
 
 ''' Simple decorator for running a function asynchronously '''
 def run_in_background(func):

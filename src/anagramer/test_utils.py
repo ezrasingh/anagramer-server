@@ -8,3 +8,4 @@ def test_normalize():
 def test_alphabetize():
     sorted_collection = alphabetize(["apple", "bear", "candy"])
     assert set(sorted_collection) ^ set(["candy", "bear", "apple"]) == set()
+    assert alphabetize(None) == None
