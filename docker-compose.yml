@@ -6,5 +6,7 @@ services:
      - "5001:5001"
     volumes:
      - ./src:/src
+    depends_on:
+     - redis
   redis:
     image: "redis:alpine"
