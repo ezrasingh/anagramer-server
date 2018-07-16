@@ -4,7 +4,7 @@ from flask import Flask
 from flask_graphql import GraphQLView
 from anagramer import api
 
-PORT = os.getenv('PORT', 5000)
+PORT = os.getenv('PORT', 5001)
 
 # Initialize Flask app
 app = Flask(__name__)

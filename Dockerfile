@@ -1,5 +1,7 @@
 FROM python:3-alpine
 
+ENV PORT 5001
+
 ADD requirements.txt /
 ADD src /
 
