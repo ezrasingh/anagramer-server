@@ -2,3 +2,4 @@ redis
 flask
 graphene
 flask_graphql
+pytest
