@@ -1,5 +1,7 @@
+# Application stack
 redis
 flask
 graphene
 flask_graphql
+# Utils
 pytest
