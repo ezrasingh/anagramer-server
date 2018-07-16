@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import graphene
 from anagramer.interface import sort, search
+from anagramer.utils import alphabetize
 
 # Initialize dictionary and anagram mappings
 sort('dictionary.txt')
@@ -15,6 +16,6 @@ class AnagramQuery(graphene.ObjectType):
     )
 
     def resolve_anagrams(self, context, word):
-        return search(word)
+        return alphabetize(search(word))
 
 schema = graphene.Schema(query=AnagramQuery)
