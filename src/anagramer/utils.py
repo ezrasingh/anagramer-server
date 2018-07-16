@@ -17,19 +17,8 @@ prime_letters = dict(zip(letters, primes))
 
 ''' Return permutation invariant prime hash '''
 def normalize(word, sub_hash=1):
-    # NOTE: The old method of - return  "fk:" + "".join(sorted(word)) # O(n log n) too expensive :(
-    # Enter Prime Hasing ;) ~ O(n) 
-    # I wrote more about this here https://github.com/EzraSingh/permutation-algorithm/blob/master/permutation-algorithm.pdf
-    # Get the prime value of the first letter
-    prime_letter = prime_letters[ word[0] ]
-    if len(word) != 1:
-        next_hash = sub_hash * prime_letter
-        # pass rest of the word with next_hash continuing the recursion
-        return normalize(word[1:], next_hash)
-    else:
-        # Complete recursion and return final hash value
-        # NOTE: Reddis keys must be in byte format
-        return bytes(sub_hash * prime_letter)
+    # Check branch hotfix/prime-normalizer for preferred normalization strategy 
+    return  "fk:" + "".join(sorted(word))
 
 
 ''' Alphabetize with respect to second letter '''
