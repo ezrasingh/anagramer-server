@@ -1,8 +1,8 @@
 # Anagramer Server
 
-A GraphQL server that returns the anagrams of a queried word.
+A GraphQL server that returns the anagrams of a queried word. [Test is out](http://107.150.29.125:5000/api?query=query%20getAnagrams%7B%20%0A%20%20anagrams(word%3A%20%22team%22)%20%0A%7D&operationName=getAnagrams)!
 
-![GraphiQL Interface](https://cdn.pbrd.co/images/HuG9WBn.png "GraphiQL Interface")
+![GraphiQL Interface](https://cdn.pbrd.co/images/HuKhiSh.png "GraphiQL Interface")
 
 ## Getting Started
 
