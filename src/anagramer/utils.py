@@ -7,13 +7,29 @@ def parse(dictionary_file):
         for word in dictionary:
             yield word.rstrip()
 
-''' Return sorted word as string '''
-def normalize(word):
-    # NOTE: This normalization function can take a number of forms
-    # sorting the word is the simplest to implement however, prime
-    # de-factorization is also a valid normalizer.
-    # Prefix normalize to prevent collisions with actual word mappings
-    return  "fk:" + "".join(sorted(word)) # O(n log n)
+# Sorted by frequency to improve performance 
+# reference: http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
+letters = "etaoinsrhdlucmfywgpbvkxqjz"
+# First 26 Primes
+primes = [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101]
+# map letter to respective prime based on index (i.e: 'e' -> 2, 't' -> 3, etc)
+prime_letters = dict(zip(letters, primes))
+
+''' Return permutation invariant prime hash '''
+def normalize(word, sub_hash=1):
+    # NOTE: The old method of - return  "fk:" + "".join(sorted(word)) # O(n log n) too expensive :(
+    # Enter Prime Hasing ;) - I wrote more about this here https://github.com/EzraSingh/permutation-algorithm/blob/master/permutation-algorithm.pdf
+    # Get the prime value of the first letter
+    prime_letter = prime_letters[ word[0] ]
+    if len(word) != 1:
+        next_hash = sub_hash * prime_letter
+        # pass rest of the word with next_hash continuing the recursion
+        return normalize(word[1:], next_hash)
+    else:
+        # Complete recursion and return final hash value
+        # NOTE: Reddis keys must be in bytes format
+        return bytes(sub_hash * prime_letter)
+
 
 ''' Alphabetize with respect to second letter '''
 def alphabetize(collection):
