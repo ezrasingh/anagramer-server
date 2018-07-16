@@ -15,6 +15,7 @@ primes = [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 6
 # map letter to respective prime based on index (i.e: 'e' -> 2, 't' -> 3, etc)
 prime_letters = dict(zip(letters, primes))
 
+# TODO: Fix issues with Redis
 ''' Return permutation invariant prime hash '''
 def normalize(word, sub_hash=1):
     # NOTE: The old method of - return  "fk:" + "".join(sorted(word)) # O(n log n) too expensive :(
