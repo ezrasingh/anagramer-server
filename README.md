@@ -1,8 +1,8 @@
 # Anagramer Server
 
-![https://pasteboard.co/HuG9WBn.png](https://pasteboard.co/HuG9WBn.png "GraphiQL Interface")
-
 A GraphQL server that returns the anagrams of a queried word.
+
+![GraphiQL Interface](https://cdn.pbrd.co/images/HuG9WBn.png "GraphiQL Interface")
 
 ## Getting Started
 
